@@ -1,2 +1,5 @@
-Data read from input.txt: This is a sample text file that we are going to read using NodeJS.. 
-Date created Sun Mar 17 2024 16:12:50 GMT+0700 (Indochina Time)
+This is a sample text file that we are going to read using NodeJS.
+
+The content of this file will be appended to the content of input.txt and will be written in output.txt file.
+
+Date created Thu Mar 21 2024 15:34:23 GMT+0700 (Indochina Time)
