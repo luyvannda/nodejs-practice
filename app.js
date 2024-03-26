@@ -1,5 +1,6 @@
 const readline = require("readline");
 const fs = require("fs"); //fs stand for "file system"
+const http = require("http");
 
 /* Lecture 4: Reading Input and Writing Output
 
@@ -31,7 +32,7 @@ let content = `Data read from input.txt: ${textIn}. \nDate created ${new Date()}
 fs.writeFileSync("./Files/output.txt", content);
 */
 
-// Lecture 7: Reading and Writing to a File asynchronously
+/* Lecture 7: Reading and Writing to a File asynchronously
 
 fs.readFile("./Files/start.txt", "utf8", (error1, data1) => {
   console.log(data1);
@@ -50,3 +51,20 @@ fs.readFile("./Files/start.txt", "utf8", (error1, data1) => {
   });
 });
 console.log("Reading file...");
+
+*/
+
+/* Chapter 8: Creating A Simple Web Server */
+
+//Step 1: Create a Server
+
+const server = http.createServer((request, response) => {
+  response.end("Hello from the server!");
+  console.log("A new request received");
+  // console.log(request); we can log request and response here to get information from each type of it
+});
+
+//Step 2: Start The Server
+server.listen(8000, "127.0.0.1", () => {
+  console.log("Server has started!");
+});
