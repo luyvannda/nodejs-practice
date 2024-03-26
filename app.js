@@ -56,10 +56,12 @@ console.log("Reading file...");
 
 /* Chapter 8: Creating A Simple Web Server */
 
+const html = fs.readFileSync("./Template/index.html");
+
 //Step 1: Create a Server
 
 const server = http.createServer((request, response) => {
-  response.end("Hello from the server!");
+  response.end(html);
   console.log("A new request received");
   // console.log(request); we can log request and response here to get information from each type of it
 });
