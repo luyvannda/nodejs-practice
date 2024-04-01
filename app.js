@@ -54,16 +54,24 @@ console.log("Reading file...");
 
 */
 
-/* Chapter 8: Creating A Simple Web Server */
+/* Chapter 12: Creating A Web Server with simple text routing */
 
 const html = fs.readFileSync("./Template/index.html");
 
 //Step 1: Create a Server
 
 const server = http.createServer((request, response) => {
-  response.end(html);
-  console.log("A new request received");
-  // console.log(request); we can log request and response here to get information from each type of it
+  let path = request.url;
+
+  if (path === "/" || path.toLocaleLowerCase() === "/home") {
+    response.end("This is the home page!!!");
+  } else if (path.toLocaleLowerCase() === "/about") {
+    response.end("This is the about page!!!");
+  } else if (path.toLocaleLowerCase() === "/contact") {
+    response.end("This is the contact page!!!");
+  } else {
+    response.end("Error 404: Page not found!");
+  }
 });
 
 //Step 2: Start The Server
