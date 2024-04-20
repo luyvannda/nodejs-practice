@@ -64,7 +64,7 @@ const server = http.createServer((request, response) => {
   let path = request.url;
 
   if (path === "/" || path.toLocaleLowerCase() === "/home") {
-    response.end("This is the home page!!!");
+    response.end(html);
   } else if (path.toLocaleLowerCase() === "/about") {
     response.end("This is the about page!!!");
   } else if (path.toLocaleLowerCase() === "/contact") {
