@@ -64,12 +64,28 @@ const server = http.createServer((request, response) => {
   let path = request.url;
 
   if (path === "/" || path.toLocaleLowerCase() === "/home") {
+    response.writeHead(200, {
+      "Content-Type": "text/html",
+      "My-Type": "Hello, World!",
+    });
     response.end(html.replace("{{%CONTENT%}}", "Welcome to our homepage"));
   } else if (path.toLocaleLowerCase() === "/about") {
+    response.writeHead(200, {
+      "Content-Type": "text/html",
+      "My-Type": "Hello, World!",
+    });
     response.end(html.replace("{{%CONTENT%}}", "This is about us page"));
   } else if (path.toLocaleLowerCase() === "/contact") {
+    response.writeHead(200, {
+      "Content-Type": "text/html",
+      "My-Type": "Hello, World!",
+    });
     response.end(html.replace("{{%CONTENT%}}", "Contact Us"));
   } else {
+    response.writeHead(404, {
+      "Content-Type": "text/html",
+      "My-Type": "Hello, World!",
+    });
     response.end(html.replace("{{%CONTENT%}}", "Error 404: Page not found!"));
   }
 });
