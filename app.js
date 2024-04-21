@@ -56,7 +56,7 @@ console.log("Reading file...");
 
 /* Chapter 12: Creating A Web Server with simple text routing */
 
-const html = fs.readFileSync("./Template/index.html");
+const html = fs.readFileSync("./Template/index.html", "utf-8");
 
 //Step 1: Create a Server
 
@@ -64,13 +64,13 @@ const server = http.createServer((request, response) => {
   let path = request.url;
 
   if (path === "/" || path.toLocaleLowerCase() === "/home") {
-    response.end(html);
+    response.end(html.replace("{{%CONTENT%}}", "Welcome to our homepage"));
   } else if (path.toLocaleLowerCase() === "/about") {
-    response.end("This is the about page!!!");
+    response.end(html.replace("{{%CONTENT%}}", "This is about us page"));
   } else if (path.toLocaleLowerCase() === "/contact") {
-    response.end("This is the contact page!!!");
+    response.end(html.replace("{{%CONTENT%}}", "Contact Us"));
   } else {
-    response.end("Error 404: Page not found!");
+    response.end(html.replace("{{%CONTENT%}}", "Error 404: Page not found!"));
   }
 });
 
