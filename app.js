@@ -57,6 +57,7 @@ console.log("Reading file...");
 /* Chapter 12: Creating A Web Server with simple text routing */
 
 const html = fs.readFileSync("./Template/index.html", "utf-8");
+let products = JSON.parse(fs.readFileSync("./Data/products.json", "utf-8"));
 
 //Step 1: Create a Server
 
@@ -81,6 +82,10 @@ const server = http.createServer((request, response) => {
       "My-Type": "Hello, World!",
     });
     response.end(html.replace("{{%CONTENT%}}", "Contact Us"));
+  } else if (path.toLocaleLowerCase() === "/products") {
+    response.writeHead(200, { "Content-Type": "application/json" });
+    response.end("You are in the products page");
+    console.log(products);
   } else {
     response.writeHead(404, {
       "Content-Type": "text/html",
